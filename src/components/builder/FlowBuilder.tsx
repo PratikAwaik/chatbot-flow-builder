@@ -9,17 +9,12 @@ import ReactFlow, {
   useNodes,
   useStore,
 } from "reactflow";
-import type {
-  Connection,
-  Edge,
-  EdgeChange,
-  NodeChange,
-  ReactFlowInstance,
-} from "reactflow";
+import type {Connection, Edge, EdgeChange, NodeChange} from "reactflow";
 import {PanelWrapper} from "../panel/PanelWrapper";
-import {DragEvent, useCallback, useState} from "react";
+import {DragEvent, useCallback} from "react";
 import {NodeTypes} from "../../types";
 import {TextNode} from "../nodes/TextNode";
+import {useFlowStore} from "../../stores/flow";
 
 const defaultEdgeOptions = {animated: true};
 
@@ -45,8 +40,8 @@ const nodeTypes = {
 };
 
 export const FlowBuilder = () => {
-  const [reactFlowInstance, setReactFlowInstance] =
-    useState<ReactFlowInstance | null>(null);
+  const reactFlowInstance = useFlowStore((s) => s.reactFlowInstance);
+  const setReactFlowInstance = useFlowStore((s) => s.setReactFlowInstance);
   const nodes = useNodes();
   const {edges, setNodes, setEdges} = useStore((s) => s);
 
