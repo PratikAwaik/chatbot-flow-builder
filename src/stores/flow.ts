@@ -1,12 +1,16 @@
-import {Node} from "reactflow";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {create} from "zustand";
-
+import {PanelMode} from "../types";
 interface FlowState {
-  nodes: Node<unknown, string | undefined>[];
-  setNodes: (nodes: Node<unknown, string | undefined>[]) => void;
+  selectedNodeId: string | null;
+  setSelectedNodeId: (id: string) => void;
+  panelMode: PanelMode;
+  setPanelMode: (mode: PanelMode) => void;
 }
 
 export const useFlowStore = create<FlowState>()((set) => ({
-  nodes: [],
-  setNodes: (nodes) => set({nodes}),
+  selectedNodeId: null,
+  setSelectedNodeId: (node) => set({selectedNodeId: node}),
+  panelMode: PanelMode.Nodes,
+  setPanelMode: (mode) => set({panelMode: mode}),
 }));
