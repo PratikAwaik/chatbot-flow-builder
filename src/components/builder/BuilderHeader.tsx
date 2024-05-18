@@ -51,7 +51,7 @@ export const BuilderHeader = () => {
   }, [setEdges, setNodes, setViewport]);
 
   return (
-    <div className="w-full px-8 py-4 flex items-center justify-end bg-gray-200">
+    <div className="w-full px-8 py-4 flex items-center justify-end bg-blue-100">
       <div className="flex items-center gap-x-4">
         <button
           className="bg-slate-100 p-2 px-4 text-sm rounded-md hover:bg-gray-50 transition-all"

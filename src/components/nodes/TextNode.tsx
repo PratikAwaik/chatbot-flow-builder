@@ -11,8 +11,10 @@ import whatsappIcon from "../../assets/whatsapp.svg";
 import {useFlowStore} from "../../stores/flow";
 import {PanelMode} from "../../types";
 import {useCallback, useMemo} from "react";
+import cn from "../../utils";
 
 export const TextNode = (props: NodeProps) => {
+  const selectedNodeId = useFlowStore((s) => s.selectedNodeId);
   const setSelectedNodeId = useFlowStore((s) => s.setSelectedNodeId);
   const setPanelMode = useFlowStore((s) => s.setPanelMode);
   const nodes = useNodes();
@@ -36,10 +38,12 @@ export const TextNode = (props: NodeProps) => {
     <>
       <Handle type="target" position={Position.Left} />
       <div
-        className="w-full border rounded-md shadow-md min-w-40 bg-white"
+        className={cn("w-full border rounded-md shadow-md min-w-40 bg-white", {
+          "border-2 border-blue-600": nodeId === selectedNodeId,
+        })}
         onClick={onNodeClick}
       >
-        <div className="p-2 rounded-tl-md rounded-tr-md flex items-center justify-between bg-teal-500">
+        <div className="p-2 border rounded-tl-md rounded-tr-md flex items-center justify-between bg-teal-500">
           <p className="font-semibold text-xs">Send Message</p>
           <img src={whatsappIcon} alt="Whatsapp Icon" width={16} height={16} />
         </div>

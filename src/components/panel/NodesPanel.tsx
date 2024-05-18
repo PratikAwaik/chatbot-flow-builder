@@ -17,13 +17,13 @@ export const NodesPanel = () => {
 
   return (
     <Panel position="top-right">
-      <div className="w-64 h-screen border rounded-md bg-white">
+      <div className="w-64 h-[calc(100vh-100px)] border rounded-md shadow-md bg-white">
         <h3 className="p-4 border-b">Nodes</h3>
         <div className="p-4">
           {nodeTypes.map((node, idx) => (
             <button
               key={idx}
-              className="w-full flex items-center p-2 border rounded-md shadow-sm gap-x-2"
+              className="w-full flex items-center p-2 border rounded-md shadow-sm gap-x-2 cursor-grab"
               onDragStart={(e) => onDragStart(e, node.type)}
               draggable
             >
